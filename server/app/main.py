@@ -1,7 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,  Depends, HTTPException
 from .routers import users
 from app.db.db import create_db_and_tables, engine
-from app.models.user import User
 
 app = FastAPI()
 

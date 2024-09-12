@@ -8,12 +8,12 @@ from ..models.user import User
 from datetime import datetime, timedelta
 from ..db.db import get_session
 
-SECRET_KEY = "your-secret-key"
+SECRET_KEY = "1262a41def74a118186b50eec43643b247b32d764aedf9b58f5f78abc1859dca"
 ALGORITHM = "HS256"
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/users/token")
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
@@ -24,6 +24,7 @@ def get_password_hash(password):
 def authenticate_user(username: str, password: str, session: Session):
     user = session.exec(select(User).where(User.username == username)).first()
     if not user or not verify_password(password, user.password):
+        print("wrong password")
         return False
     return user
 
@@ -35,6 +36,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
         expire = datetime.utcnow() + timedelta(minutes=15)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    print(oauth2_scheme)
     return encoded_jwt
 
 async def get_current_user(token: str = Depends(oauth2_scheme), session: Session = Depends(get_session)):
@@ -47,10 +49,13 @@ async def get_current_user(token: str = Depends(oauth2_scheme), session: Session
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
+            print("No username")
             raise credentials_exception
     except JWTError:
+        print("something's wrong about jwt")
         raise credentials_exception
     user = session.exec(select(User).where(User.username == username)).first()
     if user is None:
+        print("user doesn't exist")
         raise credentials_exception
     return user

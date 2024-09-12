@@ -1,8 +1,8 @@
 POST http://127.0.0.1:8000/users/
 
  {
-    "username":"string5",
-    "email":"string5@gmail.com",
+    "username":"string6",
+    "email":"string6@gmail.com",
     "password":"1234567"
  }
 

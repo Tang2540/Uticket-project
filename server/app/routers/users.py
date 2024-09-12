@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 from fastapi.security import OAuth2PasswordRequestForm
 from ..db.db import get_session
-from ..schemas.user import UserCreate, UserSignIn
+from ..schemas.user import UserCreate
 from datetime import timedelta
 from ..schemas.token import Token
 from ..models.user import User
@@ -24,7 +24,7 @@ def create_user(user: UserCreate, session: Session = Depends(get_session)):
     return new_user
 
 @router.post("/token", response_model=Token)
-async def login(form_data: UserSignIn, session: Session = Depends(get_session)):
+async def login(form_data: OAuth2PasswordRequestForm = Depends(), session: Session = Depends(get_session)):
     user = authenticate_user(form_data.username, form_data.password, session)
     if not user:
         raise HTTPException(
@@ -36,7 +36,7 @@ async def login(form_data: UserSignIn, session: Session = Depends(get_session)):
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return Token(access_token=access_token,token_type="bearer")
 
 @router.get("/checkCurrentUser", response_model=User)
 async def read_users_me(current_user: User = Depends(get_current_user)):
