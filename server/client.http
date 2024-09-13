@@ -14,3 +14,12 @@ POST http://127.0.0.1:8000/users/token
  }
 
 GET http://127.0.0.1:8000/users/checkCurrentUser
+
+////////Venue////////
+
+POST http://127.0.0.1:8000/venue/
+
+{
+    "name":"mairoo",
+    "capacity":2000
+ }

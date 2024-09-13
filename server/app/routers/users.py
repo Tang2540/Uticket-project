@@ -2,9 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 from fastapi.security import OAuth2PasswordRequestForm
 from ..db.db import get_session
-from ..schemas.user import UserCreate
+from ..schemas.schemas import UserCreate, Token
 from datetime import timedelta
-from ..schemas.token import Token
 from ..models.user import User
 from ..auth.security import get_password_hash, authenticate_user, create_access_token, get_current_user
 
