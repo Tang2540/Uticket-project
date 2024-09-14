@@ -1,0 +1,16 @@
+POST http://127.0.0.1:8000/users/
+
+ {
+    "username":"string6",
+    "email":"string6@gmail.com",
+    "password":"1234567"
+ }
+
+POST http://127.0.0.1:8000/users/token
+
+ {
+    "username":"string5",
+    "password":"1234567"
+ }
+
+GET http://127.0.0.1:8000/users/checkCurrentUser
