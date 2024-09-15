@@ -43,8 +43,10 @@ POST http://127.0.0.1:8000/utility/venue
 POST http://127.0.0.1:8000/utility/event
 
 {
-   "name":"venue1",
-   "capacity":10000
+    "eventname": "event1",
+    "eventdate": "1/08/2025",
+    "available_tickets": 10000,
+    "venue_id": 3
 }
 
 POST http://127.0.0.1:8000/utility/zone
