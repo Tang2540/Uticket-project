@@ -23,3 +23,49 @@ POST http://127.0.0.1:8000/venue/
     "name":"mairoo",
     "capacity":2000
  }
+
+
+//////
+
+POST http://127.0.0.1:8000/utility/paymentMethod
+
+{
+   "method":"credit"
+}
+
+POST http://127.0.0.1:8000/utility/venue
+
+{
+   "name":"venue1",
+   "capacity":10000
+}
+
+POST http://127.0.0.1:8000/utility/event
+
+{
+   "name":"venue1",
+   "capacity":10000
+}
+
+POST http://127.0.0.1:8000/utility/zone
+
+{
+   "zone_name":"S",
+   "venue_id":2
+}
+
+POST http://127.0.0.1:8000/utility/ezp
+
+{
+   "event_id": "1",
+    "zone_id": "1",
+    "price": 2000.0
+}
+
+POST http://127.0.0.1:8000/utility/seat
+
+{
+   "seatid": 1,
+    "seatPosition": "A1",
+    "zone_id": 1
+}

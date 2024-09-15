@@ -19,23 +19,30 @@ class Token(BaseModel):
     access_token: str
     token_type: str
     
-class Events(BaseModel):
-    eventid: int
+class EventCreate(BaseModel):
     eventname: str
-    venue: str
     eventdate: str
     available_tickets: int
+    venue_id: int
 
 class Payment(BaseModel):
     paymentid: int
     status: str
     PaymentMethod: str
+    
+class PaymentMethodCreate(BaseModel):
+    method: str
 
 class Seats(BaseModel):
     seatsid: int
     seatsposition: str
     zone: str
     price: float
+    
+class SeatCreate(BaseModel):
+    seatid:int
+    seatPosition:str
+    zone_id:int
 
 class Ticket(BaseModel):
     name: str
@@ -44,10 +51,19 @@ class Ticket(BaseModel):
     tax: Optional[float] = 0
     tags: List[str] = []
     pic: str
+    
+class EZPCreate(BaseModel):
+    event_id:int
+    zone_id:int
+    price:float
 
 class VenueCreate(BaseModel):
     name: str
     capacity: int
+    
+class ZoneCreate(BaseModel):
+    zone_name:str
+    venue_id:int
 
 class Organizer(BaseModel):
     id: int
