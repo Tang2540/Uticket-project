@@ -1,5 +1,5 @@
 from fastapi import FastAPI,  Depends, HTTPException
-from .routers import users, venue, utility
+from .routers import users, venue, utility, booking
 from app.db.db import create_db_and_tables, engine
 
 app = FastAPI()
@@ -11,6 +11,7 @@ async def on_startup():
 app.include_router(users.router)
 app.include_router(venue.router)
 app.include_router(utility.router)
+app.include_router(booking.router)
 
 @app.get("/")
 async def root():

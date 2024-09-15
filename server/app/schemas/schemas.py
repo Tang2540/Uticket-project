@@ -30,6 +30,9 @@ class Payment(BaseModel):
     status: str
     PaymentMethod: str
     
+class PaymentCreate(BaseModel):
+    payment_method_id: int
+    
 class PaymentMethodCreate(BaseModel):
     method: str
 
@@ -80,3 +83,12 @@ class Booking(BaseModel):
     amount: int
     price: float
     tax: Optional[float] = 0
+    
+class BookingCreate(BaseModel):
+    user_id: int
+    event_id: int
+    seat_id: List[int]
+    payment_method_id: int
+    price: float
+    tax: Optional[float] = 0
+    

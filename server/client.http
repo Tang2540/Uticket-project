@@ -1,3 +1,14 @@
+POST http://127.0.0.1:8000/booking/
+
+{
+   "user_id":1,
+   "event_id": 1,
+   "seat_id": [1,2],
+   "payment_method_id": 1,
+   "price": 2000.0
+}
+
+//////
 POST http://127.0.0.1:8000/users/
 
  {
@@ -67,7 +78,7 @@ POST http://127.0.0.1:8000/utility/ezp
 POST http://127.0.0.1:8000/utility/seat
 
 {
-   "seatid": 1,
-    "seatPosition": "A1",
+   "seatid": 5,
+    "seatPosition": "A5",
     "zone_id": 1
 }
