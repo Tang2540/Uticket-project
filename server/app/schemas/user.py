@@ -13,3 +13,7 @@ class UserRead(BaseModel):
     id: int
     username: str
     email: str
+
+class VenueCreate(BaseModel):
+    name: str
+    capacity: int

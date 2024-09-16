@@ -66,6 +66,7 @@ class Seats(BaseModel):
     seatid: int
     seatposition: str
     zone: str
+    price: float
 
 
 user_db = [

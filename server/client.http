@@ -1,7 +1,10 @@
+
+GET http://127.0.0.1:8000/users/
+
 POST http://127.0.0.1:8000/users/
 
  {
-    "username":"string6",
+    "username":"string60",
     "email":"string6@gmail.com",
     "password":"1234567"
  }
@@ -14,3 +17,13 @@ POST http://127.0.0.1:8000/users/token
  }
 
 GET http://127.0.0.1:8000/users/checkCurrentUser
+
+POST http://127.0.0.1:8000/venues/
+
+{
+  "name": "Concert Hall",
+  "capacity": 5000
+}
+
+
+
