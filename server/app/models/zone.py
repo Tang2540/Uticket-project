@@ -1,9 +1,7 @@
 from sqlmodel import SQLModel, Field
 from typing import Optional
-    
-class User(SQLModel, table=True):
+
+class Zone(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    username: str
-    email: str
-    password: str
-        
+    zone_name:str
+    venue_id: Optional[int] = Field(default=None, foreign_key="venue.id")

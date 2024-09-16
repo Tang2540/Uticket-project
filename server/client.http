@@ -1,6 +1,20 @@
+<<<<<<< HEAD
 
 GET http://127.0.0.1:8000/users/
 
+=======
+POST http://127.0.0.1:8000/booking/
+
+{
+   "user_id":1,
+   "event_id": 1,
+   "seat_id": [1,2],
+   "payment_method_id": 1,
+   "price": 2000.0
+}
+
+//////
+>>>>>>> beb9e35df92e2fae1c45f7bb13d1bf83c3ef66ee
 POST http://127.0.0.1:8000/users/
 
  {
@@ -18,6 +32,7 @@ POST http://127.0.0.1:8000/users/token
 
 GET http://127.0.0.1:8000/users/checkCurrentUser
 
+<<<<<<< HEAD
 POST http://127.0.0.1:8000/venues/
 
 {
@@ -27,3 +42,61 @@ POST http://127.0.0.1:8000/venues/
 
 
 
+=======
+////////Venue////////
+
+POST http://127.0.0.1:8000/venue/
+
+{
+    "name":"mairoo",
+    "capacity":2000
+ }
+
+
+//////
+
+POST http://127.0.0.1:8000/utility/paymentMethod
+
+{
+   "method":"credit"
+}
+
+POST http://127.0.0.1:8000/utility/venue
+
+{
+   "name":"venue1",
+   "capacity":10000
+}
+
+POST http://127.0.0.1:8000/utility/event
+
+{
+    "eventname": "event1",
+    "eventdate": "1/08/2025",
+    "available_tickets": 10000,
+    "venue_id": 3
+}
+
+POST http://127.0.0.1:8000/utility/zone
+
+{
+   "zone_name":"S",
+   "venue_id":2
+}
+
+POST http://127.0.0.1:8000/utility/ezp
+
+{
+   "event_id": "1",
+    "zone_id": "1",
+    "price": 2000.0
+}
+
+POST http://127.0.0.1:8000/utility/seat
+
+{
+   "seatid": 5,
+    "seatPosition": "A5",
+    "zone_id": 1
+}
+>>>>>>> beb9e35df92e2fae1c45f7bb13d1bf83c3ef66ee
