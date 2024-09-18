@@ -57,3 +57,106 @@ def create_payment_method(something: PaymentMethodCreate , session: Session = De
     session.commit()
     session.refresh(new_method)
     return new_method
+
+# GET all venues
+@router.get("/venue")
+def get_all_venues(session: Session = Depends(get_session)):
+    venues = session.exec(select(Venue)).all()
+    if not venues:
+        raise HTTPException(status_code=404, detail="No venues found")
+    return venues
+
+# GET one venue by ID
+@router.get("/venue/{venue_id}")
+def get_venue(venue_id: int, session: Session = Depends(get_session)):
+    venue = session.get(Venue, venue_id)
+    if not venue:
+        raise HTTPException(status_code=404, detail="Venue not found")
+    return venue
+
+
+# GET all events
+@router.get("/event")
+def get_all_events(session: Session = Depends(get_session)):
+    events = session.exec(select(Event)).all()
+    if not events:
+        raise HTTPException(status_code=404, detail="No events found")
+    return events
+
+# GET one event by ID
+@router.get("/event/{event_id}")
+def get_event(event_id: int, session: Session = Depends(get_session)):
+    event = session.get(Event, event_id)
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
+    return event
+
+
+# GET all zones
+@router.get("/zone")
+def get_all_zones(session: Session = Depends(get_session)):
+    zones = session.exec(select(Zone)).all()
+    if not zones:
+        raise HTTPException(status_code=404, detail="No zones found")
+    return zones
+
+# GET one zone by ID
+@router.get("/zone/{zone_id}")
+def get_zone(zone_id: int, session: Session = Depends(get_session)):
+    zone = session.get(Zone, zone_id)
+    if not zone:
+        raise HTTPException(status_code=404, detail="Zone not found")
+    return zone
+
+
+# GET all EZP records
+@router.get("/ezp")
+def get_all_ezps(session: Session = Depends(get_session)):
+    ezps = session.exec(select(EZP)).all()
+    if not ezps:
+        raise HTTPException(status_code=404, detail="No EZP records found")
+    return ezps
+
+# GET one EZP by ID
+@router.get("/ezp/{ezp_id}")
+def get_ezp(ezp_id: int, session: Session = Depends(get_session)):
+    ezp = session.get(EZP, ezp_id)
+    if not ezp:
+        raise HTTPException(status_code=404, detail="EZP not found")
+    return ezp
+
+
+# GET all seats
+@router.get("/seat")
+def get_all_seats(session: Session = Depends(get_session)):
+    seats = session.exec(select(Seat)).all()
+    if not seats:
+        raise HTTPException(status_code=404, detail="No seats found")
+    return seats
+
+# GET one seat by ID
+@router.get("/seat/{seat_id}")
+def get_seat(seat_id: int, session: Session = Depends(get_session)):
+    seat = session.get(Seat, seat_id)
+    if not seat:
+        raise HTTPException(status_code=404, detail="Seat not found")
+    return seat
+
+
+# GET all payment methods
+@router.get("/paymentMethod")
+def get_all_payment_methods(session: Session = Depends(get_session)):
+    payment_methods = session.exec(select(Payment_Method)).all()
+    if not payment_methods:
+        raise HTTPException(status_code=404, detail="No payment methods found")
+    return payment_methods
+
+# GET one payment method by ID
+@router.get("/paymentMethod/{method_id}")
+def get_payment_method(method_id: int, session: Session = Depends(get_session)):
+    method = session.get(Payment_Method, method_id)
+    if not method:
+        raise HTTPException(status_code=404, detail="Payment method not found")
+    return method
+
+

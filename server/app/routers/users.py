@@ -10,6 +10,20 @@ from ..auth.security import get_password_hash, authenticate_user, create_access_
 router = APIRouter(prefix="/users",
     tags=["users"])
 
+# GET a user by ID
+@router.get("/{user_id}", response_model=User)
+def get_user_by_id(user_id: int, session: Session = Depends(get_session)):
+    user = session.get(User, user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
+# GET all users
+@router.get("/", response_model=list[User])
+def get_all_users(session: Session = Depends(get_session)):
+    users = session.exec(select(User)).all()
+    return users
+
 @router.post("/", response_model=User)
 def create_user(user: UserCreate, session: Session = Depends(get_session)):
     existed_user = session.exec(select(User).where(User.username == user.username)).first()

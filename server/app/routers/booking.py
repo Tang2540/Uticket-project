@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Depends
-from sqlmodel import Session
+from fastapi import APIRouter, Depends, HTTPException
+from sqlmodel import Session, select
 from typing import List
 from ..db.db import get_session
 from ..schemas.schemas import BookingCreate
@@ -9,6 +9,22 @@ router = APIRouter(prefix="/booking",
     tags=["booking"])
 
 new_bookings = []
+
+# GET a booking by ID
+@router.get("/{booking_id}", response_model=Booking)
+def get_booking_by_id(booking_id: int, session: Session = Depends(get_session)):
+    booking = session.get(Booking, booking_id)
+    if not booking:
+        raise HTTPException(status_code=404, detail="Booking not found")
+    return booking
+
+# GET all bookings
+@router.get("/", response_model=List[Booking])
+def get_all_bookings(session: Session = Depends(get_session)):
+    bookings = session.exec(select(Booking)).all()
+    if not bookings:
+        raise HTTPException(status_code=404, detail="No bookings found")
+    return bookings
 
 @router.post("/",response_model=List[Booking])
 def create_booking(data:BookingCreate, session: Session = Depends(get_session)):
