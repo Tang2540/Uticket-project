@@ -14,7 +14,7 @@ new_bookings = []
 def create_booking(data:BookingCreate, session: Session = Depends(get_session)):
     event = session.get(Event, data.event_id)
     if data.payment_method_id == 2 or data.payment_method_id == 3:
-        new_payment = Payment(status="Paid",payment_method_id=data.payment_method_id)
+        new_payment = Payment(status="Paid",payment_method_id=data.payment_method_id,amount=float(data.price*len(data.seat_id)))
     else:
         new_payment = Payment(payment_method_id=data.payment_method_id)
     session.add(new_payment)
