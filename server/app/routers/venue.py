@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
+from typing import List
 from ..db import get_session
 from ..basemodels import VenueCreate
 from ..models import Venue
@@ -23,7 +24,7 @@ def get_venue(venue_id: int, session: Session = Depends(get_session)):
         raise HTTPException(status_code=404, detail="Venue not found")
     return venue
 
-@router.get("/all_venues")
+@router.get("/all_venues",response_model=List[Venue])
 def get_all_venues(session: Session = Depends(get_session)):
     venues = session.exec(select(Venue)).all()
     if not venues:

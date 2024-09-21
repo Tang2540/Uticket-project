@@ -9,7 +9,7 @@ POST http://127.0.0.1:8000/zone/
 
 {
     "zone_name":"C",
-    "venue_id":1
+    "venue_id":3
 }
 
 POST http://127.0.0.1:8000/seat/

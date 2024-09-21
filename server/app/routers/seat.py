@@ -10,7 +10,7 @@ router = APIRouter(prefix="/seat",
     tags=["seat"])
 
 # GET all seats
-@router.get("")
+@router.get("",response_model=List[Seat])
 def get_all_seats(session: Session = Depends(get_session)):
     seats = session.exec(select(Seat)).all()
     if not seats:
@@ -18,7 +18,7 @@ def get_all_seats(session: Session = Depends(get_session)):
     return seats
 
 # GET one seat by ID
-@router.get("/seat/{seat_id}")
+@router.get("/seat/{seat_id}",response_model=Seat)
 def get_seat(seat_id: int, session: Session = Depends(get_session)):
     seat = session.get(Seat, seat_id)
     if not seat:

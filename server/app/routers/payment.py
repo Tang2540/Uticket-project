@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
+from typing import List
 from ..db import get_session
 from ..security import get_current_user
 from ..basemodels import PaymentMethodCreate, PaymentIn
@@ -9,7 +10,7 @@ router = APIRouter(prefix="/payment",
     tags=["payment"])
 
 # GET all payment methods
-@router.get("/paymentMethod")
+@router.get("/paymentMethod",response_model=List[Payment_Method])
 def get_all_payment_methods(session: Session = Depends(get_session)):
     payment_methods = session.exec(select(Payment_Method)).all()
     if not payment_methods:
@@ -17,7 +18,7 @@ def get_all_payment_methods(session: Session = Depends(get_session)):
     return payment_methods
 
 # GET one payment method by ID
-@router.get("/paymentMethod/{method_id}")
+@router.get("/paymentMethod/{method_id}",response_model=Payment_Method)
 def get_payment_method(method_id: int, session: Session = Depends(get_session)):
     method = session.get(Payment_Method, method_id)
     if not method:

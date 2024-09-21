@@ -19,7 +19,7 @@ def create_event(data: EventCreate, session: Session = Depends(get_session)):
     return new_event
 
 # GET all events
-@router.get("")
+@router.get("",response_model=List[Event])
 def get_all_events(session: Session = Depends(get_session)):
     events = session.exec(select(Event)).all()
     if not events:

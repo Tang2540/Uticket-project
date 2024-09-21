@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 from ..db import get_session
+from typing import List
 from ..basemodels import ZoneCreate
 from ..models import Zone
 
@@ -8,7 +9,7 @@ router = APIRouter(prefix="/zone",
     tags=["zone"])
 
 # GET all zones
-@router.get("")
+@router.get("",response_model=Zone)
 def get_all_zones(session: Session = Depends(get_session)):
     zones = session.exec(select(Zone)).all()
     if not zones:
@@ -16,7 +17,7 @@ def get_all_zones(session: Session = Depends(get_session)):
     return zones
 
 # GET one zone by ID
-@router.get("/zone/{zone_id}")
+@router.get("/zone/{zone_id}",response_model=List[Zone])
 def get_zone(zone_id: int, session: Session = Depends(get_session)):
     zone = session.get(Zone, zone_id)
     if not zone:
