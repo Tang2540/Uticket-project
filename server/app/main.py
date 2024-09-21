@@ -1,6 +1,6 @@
 from fastapi import FastAPI,  Depends, HTTPException
-from .routers import users, venue, utility, booking
-from app.db.db import create_db_and_tables, engine
+from .routers import user, venue, booking, zone, seat, payment, event, ezp
+from app.db import create_db_and_tables, engine
 
 app = FastAPI()
 
@@ -8,11 +8,18 @@ app = FastAPI()
 async def on_startup():
     create_db_and_tables()
 
-app.include_router(users.router)
+# Include routers
+app.include_router(user.router)
 app.include_router(venue.router)
-app.include_router(utility.router)
 app.include_router(booking.router)
+app.include_router(zone.router)
+app.include_router(seat.router)
+app.include_router(payment.router)
+app.include_router(event.router)
+app.include_router(ezp.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello Bigger Applications!"}
+    return {"message": "UTicket"}
+
+    
