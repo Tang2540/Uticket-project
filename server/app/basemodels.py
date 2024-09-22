@@ -71,6 +71,7 @@ class SeatRead(BaseModel):
     seats: List[Seats]
     
 class Payments(BaseModel):
+    payment_id: int
     seat_position: str
     price: float
     status: str

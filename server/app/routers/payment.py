@@ -4,7 +4,7 @@ from typing import List
 from ..db import get_session
 from ..security import get_current_user
 from ..basemodels import PaymentMethodCreate, PaymentIn
-from ..models import Payment_Method, User
+from ..models import Payment_Method, User, Payment
 
 router = APIRouter(prefix="/payment",
     tags=["payment"])
@@ -62,3 +62,4 @@ async def pay_with_bank_transfer(data:PaymentIn, session: Session = Depends(get_
     payment = session.get(Payment, data.payment_id)
     payment.status = "Paid"
     session.commit()
+    return "Paid" 
