@@ -1,18 +1,18 @@
-POST http://127.0.0.1:8000/venue/
+POST http://127.0.0.1:8000/venue
 
 {
     "name":"Central World Arena",
     "capacity":7000
 }
 
-POST http://127.0.0.1:8000/zone/
+POST http://127.0.0.1:8000/zone
 
 {
     "zone_name":"C",
     "venue_id":3
 }
 
-POST http://127.0.0.1:8000/seat/
+POST http://127.0.0.1:8000/seat
 
 {
     "seat_position":"A5",
@@ -25,7 +25,7 @@ POST http://127.0.0.1:8000/payment/paymentMethod
     "method":"Credit Card"
 }
 
-POST http://127.0.0.1:8000/event/
+POST http://127.0.0.1:8000/event
 
 {
     "eventname":"Music Gala",
@@ -34,13 +34,6 @@ POST http://127.0.0.1:8000/event/
     "venue_id":1,
     "pic":"pic2.png",
     "organizer_id":2
-}
-
-POST http://127.0.0.1:8000/utility/organizer
-
-{
-    "name":"Music Events",
-    "email":"music@eventsmail.com"
 }
 
 POST http://127.0.0.1:8000/ezp/
