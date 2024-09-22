@@ -63,6 +63,7 @@ class BookingCreate(BaseModel):
 class Seats(BaseModel):
     seat_id:int
     seat_position: str
+    is_vacant: str
     price:float
     
 class SeatRead(BaseModel):

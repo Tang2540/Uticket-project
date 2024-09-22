@@ -36,7 +36,7 @@ def create_seat(data: SeatCreate,session: Session = Depends(get_session)):
 @router.get("/getSeats/{event_id}",response_model=List[SeatRead])
 def get_seats_by_id(event_id: int, session: Session = Depends(get_session)):
     statement = (
-        select(Zone.zone_name, Seat.id, Seat.seat_position, EZP.price)
+        select(Zone.zone_name, Seat.id, Seat.seat_position, Seat.is_vacant, EZP.price)
         .join(EZP, EZP.zone_id == Zone.id)
         .join(Seat, Seat.zone_id == Zone.id)
         .where(EZP.event_id == event_id)
@@ -50,9 +50,10 @@ def get_seats_by_id(event_id: int, session: Session = Depends(get_session)):
             {
                 "seat_id": seat_id,
                 "seat_position": seat_position,
+                "is_vacant": is_vacant,
                 "price": price
             }
-            for _, seat_id, seat_position, price, in group
+            for _, seat_id, seat_position, is_vacant, price, in group
         ]
         seats_and_zones.append({
             "zone_name": zone_name,
