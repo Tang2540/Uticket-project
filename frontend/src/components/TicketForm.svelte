@@ -1,5 +1,10 @@
 <script>
+  import { dateStore } from "../routes/store.js";
+
   export let date;
+
+  // Subscribe to dateStore to get the current selected date
+  $: date = $dateStore;
 </script>
 
 <div class="p-2 has-background-white">
