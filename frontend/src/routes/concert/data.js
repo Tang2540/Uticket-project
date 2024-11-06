@@ -8,7 +8,7 @@ export const concerts = [{
     ],
     venue: 'BITEC Event Hall 98',
     pricing: [
-    { tier: 'SO1',coor:"273,230,500,229,500,344,212,343,211,290",shape:"poly", tier_id:1 },
+    { tier: 'SO1',coor:"273,230,500,229,500,344,212,343,211,290",shape:"poly", tier_id:1},
     { tier: 'SO2', price: 6500, coor:"211,343,501,450",shape:"rect", tier_id:1 },
     { tier: 'NE1', price: 5500, coor:"528,231,754,230,817,292,815,341,525,342", shape:"poly", tier_id:3 },
     { tier: 'A1', price: 4800, coor:"233,495,499,604",shape:"rect", tier_id:4},
