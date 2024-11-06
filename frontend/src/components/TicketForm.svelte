@@ -1,0 +1,14 @@
+<script>
+  export let date;
+</script>
+
+<div class="p-2 has-background-white">
+  <div>
+    <div><span>Round:</span> {date}</div>
+    <div><span>Zone</span></div>
+    <div><span>Seat No.</span></div>
+    <div><span>Quantity</span></div>
+    <div><span>Unit Price</span></div>
+    <div><span>Total Price</span></div>
+  </div>
+</div>
