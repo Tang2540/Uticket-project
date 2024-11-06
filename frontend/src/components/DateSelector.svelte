@@ -1,5 +1,5 @@
 <script>
-  import { dateStore } from "./../store.js";
+  import { dateStore } from "../routes/store.js";
 
   export let dates;
 
@@ -12,7 +12,7 @@
       console.log($dateStore)
     } else {
       selectedDate = date.date;
-      $dateStore = date.date;
+      dateStore.set(date.date);
       console.log($dateStore)
     }
   }

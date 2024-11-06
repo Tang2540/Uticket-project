@@ -1,5 +1,5 @@
 <script>
-	import { dateStore } from './../../../../store.js';
+	import { dateStore } from "../../../store";
     import Seat from "../../../../components/Seat.svelte";
     import TicketForm from "../../../../components/TicketForm.svelte";
 

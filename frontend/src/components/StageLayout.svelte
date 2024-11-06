@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { goto } from '$app/navigation';
   export let concert;
 
   let imageRef;
@@ -46,6 +47,11 @@
       resizeObserver.disconnect();
     };
   });
+
+  function handleAreaClick(zone, event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    goto(`/concert/${concert.slug}/${zone.tier}`);
+  }
 </script>
 
 <div class="stagelayout-container">
@@ -64,7 +70,8 @@
           target=""
           alt={zone.tier}
           title={zone.tier}
-          href="/concert/{concert.slug}/{zone.tier}"
+          href="#"
+          on:click={(e) => handleAreaClick(zone, e)}
           coords={zone.scaledCoords}
           shape={zone.shape}
         />
