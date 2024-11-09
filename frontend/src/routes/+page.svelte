@@ -122,6 +122,10 @@
   .arrow-right {
     right: 1rem; 
   }
+
+  button {
+    border-radius: 20px;
+  }
 </style>
 
 <!-- Banner Carousel -->

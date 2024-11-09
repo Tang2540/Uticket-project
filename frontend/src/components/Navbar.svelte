@@ -1,4 +1,5 @@
 <script>
+  import {goto} from '$app/navigation';
   
     let lang = 'eng';
     let isModalOpen = false;
@@ -10,14 +11,22 @@
     const closeModal = () => {
       isModalOpen = false;
     };
+
+    const handleNavigateClick = (e) => {
+      e.preventDefault();
+      goto(`/concert`)
+    }
   </script>
   
   <nav>
     <div class="container">
       <div class="nav-content">
+        <div class="nav-link">
         <a href="/">
           <img class="logo" src="/uticketlogo.png" alt="uticket-logo" />
         </a>
+        <div on:click={e=>handleNavigateClick(e)} class="concert-link-btn subtitle">Concert</div>
+      </div>
   
         <div class="nav-actions">
           <div class="search-icon" on:click={openModal}>
@@ -126,5 +135,21 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
       text-decoration: none;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 2rem
+    }
+
+    .concert-link-btn {
+      cursor: pointer;
+      color: white;
+      transition: all 0.4s;
+    }
+
+    .concert-link-btn:hover {
+      color:#ff69b4;
     }
   </style>
