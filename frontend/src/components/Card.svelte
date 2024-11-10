@@ -23,7 +23,7 @@
     }
   
     .card {
-      max-width: 384px; /* equivalent to max-w-sm */
+      max-width: 384px; 
       border-radius: 0.25rem;
       overflow: hidden;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
