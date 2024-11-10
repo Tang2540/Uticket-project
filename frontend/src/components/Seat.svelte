@@ -10,13 +10,14 @@
       selectedSeats = selectedSeats.filter((seat) => seat !== seatNumber);
     } else if (selectedSeats.length < 4) {
       selectedSeats = [...selectedSeats, seatNumber];
-      seatStore.set(selectedSeats);
     }
+    seatStore.set(selectedSeats);
     console.log(selectedSeats)
   }
 
   function resetSeatSelection() {
       selectedSeats = [];
+      seatStore.set(selectedSeats);
     }
 </script>
 
@@ -44,7 +45,7 @@
   </div>
 </div>
   <button class="button is-danger mt-4" on:click={resetSeatSelection}
-    >Close</button
+    >Reset</button
   >
 </div>
 
