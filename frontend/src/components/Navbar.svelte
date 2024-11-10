@@ -25,7 +25,7 @@
         <a href="/">
           <img class="logo" src="/uticketlogo.png" alt="uticket-logo" />
         </a>
-        <div on:click={e=>handleNavigateClick(e)} class="concert-link-btn subtitle">Concert</div>
+        <div on:click={e=>handleNavigateClick(e)} class="concert-link-btn">Concert</div>
       </div>
   
         <div class="nav-actions">
@@ -147,6 +147,7 @@
       cursor: pointer;
       color: white;
       transition: all 0.4s;
+      font-weight: bold;
     }
 
     .concert-link-btn:hover {

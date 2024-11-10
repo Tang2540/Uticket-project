@@ -2,6 +2,7 @@ export const concerts = [{
     slug: "yoona_fan_meeting_tour",
     title: 'YOONA FAN MEETING TOUR : YOONITE in BANGKOK',
     img: "yoona.png",
+    cardImg: "yoona1.png",
     dates: [
         { id: 1, date: 'SAT 24 February 2024', time: '18:00' },
         { id: 2, date: 'SUN 25 February 2024', time: '18:00' }
@@ -87,6 +88,6 @@ export const concerts = [{
         { tier: 5, price: 2800, color: "#F49194" },
         { tier: 6, price: 2500, color: "#B9515A" },
 
-    ]
-
+    ],
+    status:"BUY NOW"
 }]
