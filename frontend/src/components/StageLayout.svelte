@@ -1,12 +1,17 @@
 <script>
   import { onMount } from "svelte";
-  import {goto} from '$app/navigation';
+  import { goto } from '$app/navigation';
+  import { price } from "../routes/concert/data.js";
+
   export let concert;
 
   let imageRef;
-  let originalWidth = 1026; // Set this to your original image width
-  let originalHeight = 1081; // Set this to your original image height
+  let originalWidth = 1026;
+  let originalHeight = 1081;
   let mapAreas = [];
+
+  // Get pricing data for the specific concert slug
+  const currentPricing = price.find((p) => p.slug === "yoona_fan_meeting_tour").pricing;
 
   function updateCoords() {
     if (!imageRef) return;
@@ -18,8 +23,6 @@
 
     mapAreas = concert.pricing.map((zone) => {
       const coords = zone.coor.split(",").map((coord, index) => {
-        // Scale even numbers (x coordinates) by x scale
-        // Scale odd numbers (y coordinates) by y scale
         return Math.round(coord * (index % 2 === 0 ? scale.x : scale.y));
       });
 
@@ -31,10 +34,8 @@
   }
 
   onMount(() => {
-    // Initial update
     updateCoords();
 
-    // Create ResizeObserver to watch for image size changes
     const resizeObserver = new ResizeObserver(() => {
       updateCoords();
     });
@@ -50,7 +51,7 @@
 
   function handleClick(zone, e) {
     e.preventDefault();
-    goto(`/concert/${concert.slug}/${zone.tier}`)
+    goto(`/concert/${concert.slug}/${zone.tier}`);
   }
 </script>
 
@@ -71,7 +72,7 @@
           alt={zone.tier}
           title={zone.tier}
           href="#"
-          on:click={e=>handleClick(zone, e)}
+          on:click={(e) => handleClick(zone, e)}
           coords={zone.scaledCoords}
           shape={zone.shape}
         />
@@ -83,8 +84,12 @@
     <div class="price-card">
       <div style="color:black">PRICE</div>
       <div class="price-list">
-        {#each concert.pricing as zone}
-          <div style="background-color:{zone.color}" class="price-box">{zone.price} BAHT</div>
+        {#each currentPricing as zone, index}
+          {#if index < 6} <!-- Display only the first 6 tiers -->
+            <div style="background-color:{zone.color}" class="price-box">
+              {zone.price} BAHT
+            </div>
+          {/if}
         {/each}
       </div>
     </div>

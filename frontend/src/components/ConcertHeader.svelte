@@ -46,8 +46,8 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.8); /* Black overlay with 50% opacity */
-      /* You can change the color and opacity by adjusting the rgba values */
+      background-color: rgba(0, 0, 0, 0.8);
+      
     }
   
     .header-bckimg > * {

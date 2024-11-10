@@ -8,12 +8,12 @@
     console.log(date);
     if (selectedDate === date) {
       selectedDate = null;
-      dateStore.set(null); // Clear the store when deselecting
+      dateStore.set(null); 
     } else {
       selectedDate = date;
-      dateStore.set(date); // Update the store with the selected date
+      dateStore.set(date); 
     }
-    console.log($dateStore); // Log the current store value
+    console.log($dateStore); 
   }
 </script>
 
