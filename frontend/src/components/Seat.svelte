@@ -1,51 +1,53 @@
 <script>
-	import { seatStore } from './../routes/store.js';
+  import { seatStore } from './../routes/store.js';
   export let selectedZone;
   let selectedSeats = [];
 
-  export let concert
+  export let concert;
 
   function toggleSeat(seatNumber) {
+    // Check if the seat is already selected
     if (selectedSeats.includes(seatNumber)) {
+      // If the seat is selected, remove it from selectedSeats
       selectedSeats = selectedSeats.filter((seat) => seat !== seatNumber);
     } else if (selectedSeats.length < 4) {
+      // Add the seat if not selected, and if limit is not reached
       selectedSeats = [...selectedSeats, seatNumber];
-      seatStore.set(selectedSeats);
     }
-    console.log(selectedSeats)
+    // Update the store with the current selectedSeats array
+    seatStore.set(selectedSeats);
+    console.log(selectedSeats);
   }
 
   function resetSeatSelection() {
-      selectedSeats = [];
-    }
+    selectedSeats = [];
+    seatStore.set(selectedSeats); // Clear store data on reset
+  }
 </script>
 
 <div class="box seat-popup">
   <h2 class="title is-5">Select Seats in Zone {selectedZone}</h2>
   <div class="seat-map-container">
-  <div class="zone-col">
-    <div style="height:40px" class="text-box">A</div>
-    <div style="height:40px" class="text-box">B</div>
-    <div style="height:40px" class="text-box">C</div>
-    <div style="height:40px" class="text-box">D</div>
+    <div class="zone-col">
+      <div style="height:40px" class="text-box">A</div>
+      <div style="height:40px" class="text-box">B</div>
+      <div style="height:40px" class="text-box">C</div>
+      <div style="height:40px" class="text-box">D</div>
+    </div>
+    <div class="seats-grid">
+      {#each concert.seats as seat}
+        <button
+          class="seat-button"
+          class:seat-selected={selectedSeats.includes(seat.position)}
+          on:click={() => toggleSeat(seat.position)}
+          disabled={selectedSeats.length >= 4 && !selectedSeats.includes(seat.position)}
+        >
+          {seat.No}
+        </button>
+      {/each}
+    </div>
   </div>
-  <div class="seats-grid">
-    {#each concert.seats as seat}
-      <button
-        class="seat-button"
-        class:seat-selected={selectedSeats.includes(seat.position)}
-        on:click={() => toggleSeat(seat.position)}
-        disabled={selectedSeats.length >= 4 &&
-          !selectedSeats.includes(seat.position)}
-      >
-        {seat.No}
-      </button>
-    {/each}
-  </div>
-</div>
-  <button class="button is-danger mt-4" on:click={resetSeatSelection}
-    >Close</button
-  >
+  <button class="button is-danger mt-4" on:click={resetSeatSelection}>Close</button>
 </div>
 
 <style>
@@ -55,14 +57,13 @@
     padding: 1rem;
     text-align: center;
   }
-
   .seat-map-container {
     display: flex;
   }
   .seats-grid {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    gap: 0.45rem; /* Reduced gap for closer seats */
+    gap: 0.45rem;
     margin-top: 1rem;
     flex-grow: 1;
   }
@@ -77,9 +78,8 @@
     cursor: pointer;
   }
   .seat-selected {
-    background-color: #920eff; 
+    background-color: #920eff;
   }
-
   .zone-col {
     display: flex;
     flex-direction: column;
@@ -90,7 +90,6 @@
     height: 100%;
     gap: 0.45rem;
   }
-
   .text-box {
     display: flex;
     flex-direction: column;

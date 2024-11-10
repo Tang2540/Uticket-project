@@ -21,11 +21,11 @@
   }
 
   onMount(() => {
-    interval = setInterval(nextBanner, 5000); // Auto-slide every 5 seconds
+    interval = setInterval(nextBanner, 5000); 
     return () => clearInterval(interval);
   });
 
-  // Popular concerts data with slugs using underscores
+  
   const concerts = [
     {
       id: 1,
