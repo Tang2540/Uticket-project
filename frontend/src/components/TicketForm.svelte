@@ -1,22 +1,46 @@
 <script>
-  import { dateStore,seatStore } from "../routes/store.js";
   
   export let pricing;
   export let zoneTier;
   export let date;
+  export let seats
 
   // Subscribe to dateStore to get the current selected date
-  $: date = $dateStore;
-  $: seats = $seatStore;
 </script>
 
-<div class="p-2 has-background-white">
-  <div>
-    <div><span>Round:</span> {date}</div>
-    <div><span>Zone:</span> {pricing.zone}</div>
-    <div><span>Seat No:</span> {seats}</div>
-    <div><span>Quantity:</span> {seats.length}</div>
-    <div><span>Unit Price:</span> {zoneTier.price}</div>
-    <div><span>Total Price:</span> {zoneTier.price*seats.length}</div>
+<div class="info-container">
+  <div class="has-background-white p-4 info-box">
+    <div class="info-list"><span>Round:</span>  {date}</div>
+    <div class="info-list"><span>Zone:</span>  {pricing.zone}</div>
+    <div class="info-list"><span>Seat No:</span>  {seats}</div>
+    <div class="info-list"><span>Quantity:</span>  {seats.length}</div>
+    <div class="info-list"><span>Unit Price:</span>  {zoneTier.price}</div>
+    <div class="info-list"><span>Total Price:  {zoneTier.price*seats.length}</span></div>
   </div>
 </div>
+
+<style>
+  .info-container {
+    display: flex;
+    justify-content: center;
+    color: black;
+  }
+
+  .info-box {
+    border-radius: 20px;
+    width: 70%;
+  }
+
+  .info-list {
+    border-bottom: 0.5px solid black;
+    padding: 8px;
+  }
+
+  .info-list span {
+    font-weight: bold;
+  }
+
+  .info-list:nth-child(6) {
+    border-bottom: none;
+  }
+</style>
