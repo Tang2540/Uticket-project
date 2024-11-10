@@ -3,9 +3,10 @@
   
   // Banner carousel data
   const banners = [
-    { id: 1, image: "chaeunwoo.jpg", title: "2024 TEN FIRST FAN-CON [1001]" },
-    { id: 2, image: "ten.jpg", title: "PARK SHIN HYE ASIA TOUR" },
-    { id: 3, image: "parksinhye.jpg", title: "CHA EUN-WOO: Just One 10 Minute" },
+    { id: 1, image: "Uticketbanner.png", title: "U-Ticket Festival" },
+    { id: 2, image: "tenbanner.png", title: "2024 TEN FIRST FAN-CON [1001]" },
+    { id: 3, image: "sjbanner.png", title: "SUPER JUNIOR-L.S.S. THE SHOW: Three Guys in Bangkok" },
+    { id: 4, image: "chabanner.png", title: "CHA EUN-WOO: Just One 10 Minute" },
   ];
 
   let currentIndex = 0;
@@ -70,7 +71,7 @@
     {
       id: 5,
       slug: "super_junior_lss_the_show",
-      title: "SUPER JUNIOR-L.S.S. THE SHOW: Three Guys in",
+      title: "SUPER JUNIOR-L.S.S. THE SHOW: Three Guys in Bangkok",
       location: "Impact Hall 5, Union Mall",
       image: "superjunior.jpg",
       date: "6 April 2024",
@@ -81,6 +82,13 @@
 </script>
 
 <style>
+  /* Updated class for fixed concert image size */
+  .fixed-image {
+    width: 600px;
+    height: 500px;
+    object-fit: cover; /* Keeps aspect ratio without distortion */
+  }
+  
   .dot-container {
     display: flex;
     gap: 0.5rem;
@@ -160,15 +168,16 @@
         <div class="column is-3">
           <div class="card">
             <div class="card-image">
-              <figure class="image is-4by3">
-                <img src={concert.image} alt={concert.title} />
+              <figure class="image">
+                <!-- Apply the .fixed-image class for consistent dimensions -->
+                <img src={concert.image} alt={concert.title} class="fixed-image" />
               </figure>
             </div>
             <div class="card-content has-text-centered">
               <p class="title is-6 has-text-white">{concert.title}</p>
               <p class="subtitle is-7 has-text-grey-light">{concert.location}</p>
               <p class="is-size-7 has-text-grey-light">{concert.date}</p>
-              <!-- Update: Button with dynamic link to concert page -->
+              <!-- Button with dynamic link to concert page -->
               <a href={`/concert/${concert.slug}`} class="button is-fullwidth is-small mt-3 {concert.statusClass}">{concert.status}</a>
             </div>
           </div>

@@ -6,22 +6,22 @@
   export let concert;
 
   function toggleSeat(seatNumber) {
-    // Check if the seat is already selected
+    
     if (selectedSeats.includes(seatNumber)) {
-      // If the seat is selected, remove it from selectedSeats
+      
       selectedSeats = selectedSeats.filter((seat) => seat !== seatNumber);
     } else if (selectedSeats.length < 4) {
-      // Add the seat if not selected, and if limit is not reached
+      
       selectedSeats = [...selectedSeats, seatNumber];
     }
-    // Update the store with the current selectedSeats array
+    
     seatStore.set(selectedSeats);
     console.log(selectedSeats);
   }
 
   function resetSeatSelection() {
     selectedSeats = [];
-    seatStore.set(selectedSeats); // Clear store data on reset
+    seatStore.set(selectedSeats); // Clear store data 
   }
 </script>
 
