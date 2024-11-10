@@ -8,14 +8,33 @@ export const concerts = [{
     ],
     venue: 'BITEC Event Hall 98',
     pricing: [
-        { zone: 'SO1', coor: "273,230,500,229,500,344,212,343,211,290", shape: "poly", zone_tier_id: 1},
-        { zone: 'SO2', coor: "211,343,501,450", shape: "rect", zone_tier_id: 1 },
-        { zone: 'NE1', coor: "528,231,754,230,817,292,815,341,525,342", shape: "poly", zone_tier_id: 2 },
-        { zone: 'A1', coor: "233,495,499,604", shape: "rect", zone_tier_id: 3},
-        { zone: 'B1', coor: "233,625,500,627,501,686,434,688,433,707,232,705", shape: "poly", zone_tier_id: 4 },
-        { zone: 'C1', coor: "233,737,433,847", shape: "rect", zone_tier_id: 5 },
-        { zone: 'S1', coor: "88,353,170,523", shape: "rect", zone_tier_id: 6}
-    ],
+        { zone: 'SO1', coor:"273,230,500,229,500,344,212,343,211,290", shape:"poly", zone_tier_id:1},
+        { zone: 'SO2', coor:"211,343,501,450", shape:"rect", zone_tier_id:2},
+        { zone: 'NE1', coor:"528,231,754,230,817,292,815,341,525,342", shape:"poly", zone_tier_id:1},
+        { zone: 'NE2', coor:"527,345,815,450", shape:"rect", zone_tier_id:2},
+        { zone: 'A1', coor:"233,495,499,604", shape:"rect", zone_tier_id:3},
+        { zone: 'A2', coor:"528,499,795,602", shape:"rect", zone_tier_id:3},
+        { zone: 'B1', coor:"233,625,500,627,501,686,434,688,433,707,232,705", shape:"poly", zone_tier_id:4},
+        { zone: 'B2', coor:"794,705,592,707,591,689,526,689,526,628,792,627", shape:"poly", zone_tier_id:4},
+        { zone: 'C1', coor:"233,737,433,847", shape:"rect", zone_tier_id:5},
+        { zone: 'C2', coor:"593,739,795,846", shape:"rect", zone_tier_id:5},
+        { zone: 'S1', coor:"88,353,170,523", shape:"rect", zone_tier_id:3},
+        { zone: 'S2', coor:"89,549,169,714", shape:"rect", zone_tier_id:3},
+        { zone: 'S8', coor:"855,354,942,522", shape:"rect", zone_tier_id:3},
+        { zone: 'S7', coor:"857,550,942,717", shape:"rect", zone_tier_id:3},
+        { zone: 'S9', coor:"0,353,87,521", shape:"rect", zone_tier_id:4},
+        { zone: 'S10', coor:"2,547,87,715", shape:"rect", zone_tier_id:4},
+        { zone: 'S15', coor:"944,548,1024,716", shape:"rect", zone_tier_id:4},
+        { zone: 'S16', coor:"943,353,1025,520", shape:"rect", zone_tier_id:4},
+        { zone: 'S3', coor:"200,889,342,957", shape:"rect", zone_tier_id:5},
+        { zone: 'S6', coor:"685,890,826,957", shape:"rect", zone_tier_id:5},
+        { zone: 'S4', coor:"363,889,475,891,475,917,503,918,504,957,364,956", shape:"poly", zone_tier_id:5},
+        { zone: 'S5', coor:"663,891,552,889,551,918,522,919,522,957,664,957", shape:"poly", zone_tier_id:5},
+        { zone: 'S11', coor:"201,958,341,1080", shape:"rect", zone_tier_id:6},
+        { zone: 'S12', coor:"365,959,505,1080", shape:"rect", zone_tier_id:6},
+        { zone: 'S13', coor:"523,960,664,1080", shape:"rect", zone_tier_id:6},
+        { zone: 'S14', coor:"689,958,824,1080", shape:"rect", zone_tier_id:6},
+        ],
     seatMap: "/yoona_seat.png",
     seats: [
         { id: 1, No: 1, position: "A1", zone: "SO1", isVacant: true },
@@ -71,16 +90,3 @@ export const concerts = [{
     ]
 
 }]
-
-//export const price = [{
-//    slug: "yoona_fan_meeting_tour",
-//    pricing: [
-//        { tier: 1, price: 6500, color: "#F7B7D2" },
-//        { tier: 2, price: 5500, color: "#F04F9D" },
-//        { tier: 3, price: 4800, color: "#EE1067" },
-//        { tier: 4, price: 3800, color: "#E8BDB3" },
-//        { tier: 5, price: 2800, color: "#F49194" },
-//        { tier: 6, price: 2500, color: "#B9515A" },
-//
-//    ]
-//}]
