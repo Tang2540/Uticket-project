@@ -1,4 +1,5 @@
 <script>
+	import { seatStore } from './../routes/store.js';
   export let selectedZone;
   let selectedSeats = [];
 
@@ -9,8 +10,11 @@
       selectedSeats = selectedSeats.filter((seat) => seat !== seatNumber);
     } else if (selectedSeats.length < 4) {
       selectedSeats = [...selectedSeats, seatNumber];
+      seatStore.set(selectedSeats);
     }
+    console.log(selectedSeats)
   }
+
   function resetSeatSelection() {
       selectedSeats = [];
     }
@@ -29,10 +33,10 @@
     {#each concert.seats as seat}
       <button
         class="seat-button"
-        class:seat-selected={selectedSeats.includes(seat.id + 1)}
-        on:click={() => toggleSeat(seat.id + 1)}
+        class:seat-selected={selectedSeats.includes(seat.position)}
+        on:click={() => toggleSeat(seat.position)}
         disabled={selectedSeats.length >= 4 &&
-          !selectedSeats.includes(seat.id + 1)}
+          !selectedSeats.includes(seat.position)}
       >
         {seat.No}
       </button>

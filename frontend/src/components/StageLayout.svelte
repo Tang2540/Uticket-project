@@ -1,7 +1,6 @@
 <script>
   import { onMount } from "svelte";
   import { goto } from '$app/navigation';
-  import { price } from "../routes/concert/data.js";
 
   export let concert;
 
@@ -10,8 +9,6 @@
   let originalHeight = 1081;
   let mapAreas = [];
 
-  // Get pricing data for the specific concert slug
-  const currentPricing = price.find((p) => p.slug === "yoona_fan_meeting_tour").pricing;
 
   function updateCoords() {
     if (!imageRef) return;
@@ -51,7 +48,7 @@
 
   function handleClick(zone, e) {
     e.preventDefault();
-    goto(`/concert/${concert.slug}/${zone.tier}`);
+    goto(`/concert/${concert.slug}/${zone.zone}`);
   }
 </script>
 
@@ -69,8 +66,8 @@
       {#each mapAreas as zone}
         <area
           target=""
-          alt={zone.tier}
-          title={zone.tier}
+          alt={zone.zone}
+          title={zone.zone}
           href="#"
           on:click={(e) => handleClick(zone, e)}
           coords={zone.scaledCoords}
@@ -84,12 +81,11 @@
     <div class="price-card">
       <div style="color:black">PRICE</div>
       <div class="price-list">
-        {#each currentPricing as zone, index}
-          {#if index < 6} <!-- Display only the first 6 tiers -->
+        {#each concert.zone_tier as zone}
+        
             <div style="background-color:{zone.color}" class="price-box">
               {zone.price} BAHT
             </div>
-          {/if}
         {/each}
       </div>
     </div>
