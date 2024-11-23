@@ -27,7 +27,7 @@ def get_all_events(session: Session = Depends(get_session)):
     return events
 
 #Get one event by ID
-@router.get("/event/{event_id}")
+@router.get("/event/{slug}")
 def get_event(event_id: int, session: Session = Depends(get_session)):
     event = session.get(Event, event_id)
     if not event:

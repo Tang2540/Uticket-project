@@ -59,8 +59,8 @@
   .buttons-container {
     margin-top: 20px;
     display: flex;
-    justify-content: center; 
-    gap: 20px; 
+    justify-content: space-between;
+    align-items: center;
   }
 
   .button {
