@@ -17,8 +17,11 @@ class Event(SQLModel, table=True):
     available_tickets: int
     venue_id: Optional[int] = Field(default=None, foreign_key="venue.id")
     description: Optional[str] = Field(default='No Description')
-    pic: str
+    img: str
     organizer_id: int = Field(default=None, foreign_key="organizer.id")
+    card_img: str
+    seat_map: str
+    slug: str
     
 class Tag(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -71,3 +74,9 @@ class Zone(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     zone_name:str
     venue_id: Optional[int] = Field(default=None, foreign_key="venue.id")
+
+class Zone_Tier(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    price: int
+    color: str
+    event_id: Optional[int] = Field(default=None, foreign_key="event.id")

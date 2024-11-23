@@ -68,18 +68,18 @@
   <div class="container">
     <h2 class="title is-4 has-text-white mb-4">Popular Concerts</h2>
     <div class="columns is-multiline">
-      {#each summaries as {cardImg,title,venue,date,slug,status}}
+      {#each summaries as {card_img,eventname,eventdate,status,name,slug}}
         <div class="column is-3">
           <div class="card">
             <div class="card-image">
               <figure class="image">
-                <img src={cardImg} alt={title} class="fixed-image" />
+                <img src={card_img} alt={eventname} class="fixed-image" />
               </figure>
             </div>
             <div class="card-content has-text-centered">
-              <p class="title is-6 has-text-white">{title}</p>
-              <p class="subtitle is-7 has-text-grey-light">{venue}</p>
-              <p class="is-size-7 has-text-grey-light">{date}</p>
+              <p class="title is-6 has-text-white">{eventname}</p>
+              <p class="subtitle is-7 has-text-grey-light">{name}</p>
+              <p class="is-size-7 has-text-grey-light">{eventdate}</p>
               <a href={`/concert/${slug}`} class={`button is-fullwidth is-small mt-3 ${status==="BUY NOW"?"has-background-danger has-text-white":status==="Sold Out"?"has-background-grey-dark has-text-white":"has-background-transparent has-text-white has-border-white"}`}>{status}</a>
             </div>
           </div>
