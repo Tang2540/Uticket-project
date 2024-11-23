@@ -91,3 +91,5 @@ export const concerts = [{
     ],
     status:"BUY NOW"
 }]
+
+//้ต้องใส่ที่นั่งแต่ล่ะที่ + เปลี่ยน int ของ seatmap เป็น varchar
