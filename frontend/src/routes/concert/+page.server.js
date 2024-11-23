@@ -1,7 +1,8 @@
-import { concerts } from "./data.js";
+export const load = async ({fetch, params}) => {
+  const res = await fetch('http://127.0.0.1:8000/event');
+  const summaries = await res.json();
 
-export function load() {
   return {
-    summaries: concerts.map((concert) => ({ slug: concert.slug, title: concert.title, venue: concert.venue, status: concert.status, cardImg: concert.cardImg, date: concert.date })),
-  };
+    summaries: summaries
+  }
 }

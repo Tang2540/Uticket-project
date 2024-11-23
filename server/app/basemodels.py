@@ -83,3 +83,10 @@ class BookingRead(BaseModel):
 class PaymentIn(BaseModel):
     payment_id: int
     
+class EventRead(BaseModel):
+    eventname: str
+    eventdate: str
+    card_img: str
+    name: str
+    slug: str
+    

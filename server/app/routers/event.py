@@ -4,7 +4,7 @@ from typing import List
 from itertools import groupby
 from ..db import get_session
 from ..models import Event, Venue, Zone, Seat, Event_Zone_Price as EZP
-from ..basemodels import EventCreate
+from ..basemodels import EventCreate, EventRead
 
 router = APIRouter(prefix="/event",
     tags=["event"])
@@ -19,11 +19,14 @@ def create_event(data: EventCreate, session: Session = Depends(get_session)):
     return new_event
 
 # GET all events
-@router.get("",response_model=List[Event])
+@router.get("", response_model=List[EventRead])
 def get_all_events(session: Session = Depends(get_session)):
-    events = session.exec(select(Event)).all()
+    statement = select(Event.slug,Event.eventname,Event.card_img,Event.eventdate,Venue.name).join(Venue, Venue.id == Event.venue_id)
+    events = session.exec(statement).all()
+    
     if not events:
         raise HTTPException(status_code=404, detail="No events found")
+    
     return events
 
 #Get one event by ID
